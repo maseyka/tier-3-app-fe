@@ -1,5 +1,6 @@
 const path = require('path');
 const webpack = require('webpack');
+const CopyWebpackPlugin = require('copy-webpack-plugin')
 
 const port = process.env.PORT || 3000;
 const backend = process.env.BACKEND || '';
@@ -17,7 +18,7 @@ module.exports = {
   devtool: 'source-map',
   entry: entries,
   output: {
-    path: path.join(__dirname, 'public/dist/'),
+    path: path.join(__dirname, 'build/dist/'),
     filename: 'bundle.js',
     publicPath: '/dist/'
     /* redbox-react/README.md */
@@ -27,7 +28,10 @@ module.exports = {
     new webpack.HotModuleReplacementPlugin(),
     new webpack.DefinePlugin({
       __API_SERVER_URL__: JSON.stringify(backend)
-    })
+    }),
+    new CopyWebpackPlugin([
+      {from: path.join(__dirname, 'public'), to: path.join(__dirname, 'build')}
+    ], {})
   ],
   resolve: {
     extensions: ['', '.ts', '.tsx', '.js']

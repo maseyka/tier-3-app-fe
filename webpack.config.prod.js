@@ -1,5 +1,6 @@
 const path = require('path');
 const webpack = require('webpack');
+const CopyWebpackPlugin = require('copy-webpack-plugin')
 
 const port = process.env.PORT || 3000;
 
@@ -12,7 +13,7 @@ module.exports = {
   devtool: 'source-map',
   entry: entries,
   output: {
-    path: path.join(__dirname, 'public/dist/'),
+    path: path.join(__dirname, 'build/dist/'),
     filename: 'bundle.js',
     publicPath: '/dist/'
     /* redbox-react/README.md */
@@ -24,7 +25,10 @@ module.exports = {
         'NODE_ENV': JSON.stringify('production'),
       },
        __API_SERVER_URL__: JSON.stringify('')
-    })
+    }),
+    new CopyWebpackPlugin([
+      {from: path.join(__dirname, 'public'), to: path.join(__dirname, 'build')}
+    ], {})
   ],
   resolve: {
     extensions: ['', '.ts', '.tsx', '.js']
