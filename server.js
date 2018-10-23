@@ -207,7 +207,7 @@ function runDevServer(port, protocol) {
     // to be used for HTML files, even <link href="./src/something.png"> would
     // get resolved correctly by Webpack and handled both in development and
     // in production without actually serving it by that path.
-    contentBase: path.join(__dirname, 'public/'),
+    contentBase: path.join(__dirname, 'build/'),
     // Enable hot reloading server. It will provide /sockjs-node/ endpoint
     // for the WebpackDevServer client so it can learn when the files were
     // updated. The WebpackDevServer client is included as an entry point

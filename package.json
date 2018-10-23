@@ -11,8 +11,8 @@
     "test:watch": "jest --watchAll --no-cache",
     "test:coverage": "jest --coverage",
     "start": "node server.js",
-    "build:clean": "typings install && rimraf ./public/dist && webpack --config webpack.config.js",
-    "build:prod": "typings install && rimraf ./public/dist && NODE_ENV=production webpack --config webpack.config.prod.js"
+    "build:clean": "typings install && rimraf ./build && webpack --config webpack.config.js",
+    "build:prod": "typings install && rimraf ./build && NODE_ENV=production webpack --config webpack.config.prod.js"
   },
   "author": "Nils Hartmann",
   "license": "ISC",
@@ -35,6 +35,7 @@
     "babel-preset-react": "^6.3.13",
     "babel-preset-stage-0": "^6.3.13",
     "chalk": "^1.1.3",
+    "copy-webpack-plugin": "^4.5.3",
     "cross-env": "^1.0.7",
     "css-loader": "^0.23.1",
     "enzyme": "^2.5.1",
