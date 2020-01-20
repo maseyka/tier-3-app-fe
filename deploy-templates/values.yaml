@@ -1,0 +1,18 @@
+name: tier-3-app-fe
+namespace: ""
+cdPipelineName: ""
+cdPipelineStageName: ""
+dnsWildcard: eks-delivery.aws.main.edp.projects.epam.com
+
+database:
+  required: false
+
+
+ingress:
+  required: true
+  site: petclinic
+  path: /
+
+image:
+  name: tier-3-app-fe
+  version: latest
